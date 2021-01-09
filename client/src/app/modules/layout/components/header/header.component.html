@@ -1,0 +1,33 @@
+<header
+    role="banner"
+    class="ml-header-container py-1">
+    <nav class="navbar container">
+        <a
+            class="navbar-brand mr-2"
+            [routerLink]="['/items']">
+            <!-- <img
+                src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.12.0/mercadolibre/logo__large_plus@2x.png"
+                src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.12.0/mercadolibre/logo__small@2x.png"
+                alt="Logo"> -->
+        </a>
+        <div class="navbar-search">
+            <form [formGroup]="formG" (ngSubmit)="search()">
+                <input
+                    [formControl]="searchControl"
+                    class="nav-search-input"
+                    type="search"
+                    placeholder="Nunca dejes de buscar"
+                    type="text"
+                    aria-label="Search">
+                <button
+                    class="nav-search-btn"
+                    [disabled]="searchControl.invalid"
+                    type="submit">
+                    <img
+                        src="./assets/img/search.svg"
+                        alt="buscar">
+                </button>
+            </form>
+        </div>
+    </nav>
+</header>

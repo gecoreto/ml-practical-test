@@ -1,0 +1,51 @@
+@import 'utils'
+
+$input-height: 39px
+
+.ml-header-container
+  background-color: var(--ml-primary-color)
+  .navbar
+    display: flex
+    flex-wrap: inherit
+    align-items: center
+    // justify-content: space-between
+
+    &-brand
+      background-image: url(https://http2.mlstatic.com/frontend-assets/ui-navigation/5.12.0/mercadolibre/logo__small@2x.png)
+      background-size: 44px 31px
+      background-repeat: no-repeat
+      width: 55px
+      height: 32px
+      top: 8px
+      left: 10px
+      @include media-width-min(md)
+        background-image: url(https://http2.mlstatic.com/frontend-assets/ui-navigation/5.12.0/mercadolibre/logo__large_plus@2x.png)
+        background-size: 134px 34px
+        width: 160px
+        height: 35px
+
+    &-search
+      width: 100%
+      form
+        display: flex
+        .nav-search
+          &-input
+            width: 100%
+            height: $input-height
+            color: #333
+            padding: 7px 60px 9px 15px
+            border-radius: 2px
+            background-color: var(--ml-white-color)
+            border: 0 rgba(0,0,0,.2)
+          &-btn
+            background-color: #ededed
+            height: $input-height
+            padding: 10px
+            cursor: pointer
+            border: none
+            font-size: 22px
+            color: #666666
+            line-height: 1rem
+            outline: 0
+            > img
+              width: 24px

@@ -1,0 +1,23 @@
+@import 'utils'
+
+.item-detail-container
+  display: flex
+  flex-direction: column
+  background: var(--ml-white-color)
+
+  &-column
+    &.left
+      .item-img > img
+        width: 100%
+        max-width: 500px
+
+    .short-description
+      &-btns
+        display: flex
+        flex-direction: column
+
+  @include media-width-min(md)
+    flex-direction: row
+    &-column
+      &.left
+        width: 80%

@@ -1,0 +1,49 @@
+=flex($alignItems: stretch, $justifyContent: flex-start, $direction: row)
+  display: flex
+  align-items: $alignItems
+  justify-content: $justifyContent
+  flex-direction: $direction
+
+=shadow($backgroundColor: var(--white), $borderRadius: 4px, $boxShadow: 0 2px 8px 0 rgba(65, 74, 83, 0.3), $border: solid 1px var(--gray-4))
+  background-color: $backgroundColor
+  border-radius: $borderRadius
+  border: $border
+  box-shadow: $boxShadow
+
+@mixin media-width-max($name, $_breakpoints: $breakpoints)
+  $width: map-get($_breakpoints, $name)
+  @if $width
+    @media (max-width: $width)
+      @content
+
+@mixin media-width-min($name, $_breakpoints: $breakpoints)
+  $width: map-get($_breakpoints, $name)
+  @if $width
+    @media (min-width: $width)
+      @content
+
+@mixin media-width-between($min, $max)
+  @media (min-width: $min) and (max-width: $max)
+    @content
+
+@mixin before-width-and-height-100
+  position: relative
+  &::before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    @content
+
+@mixin after-width-and-height-100
+  position: relative
+  &::after
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    @content

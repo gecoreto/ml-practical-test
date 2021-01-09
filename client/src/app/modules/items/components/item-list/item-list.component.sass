@@ -1,0 +1,45 @@
+@import 'utils'
+
+.item-list-container
+  background: var(--ml-white-color)
+  .product-item:not(:last-child)
+    border-bottom: thin solid #eee
+
+  .product-item
+    cursor: pointer
+    padding: .5rem 0
+    &-img
+      .item-image
+        width: 100%
+
+    &-info
+      &-options
+        color: #333
+        &.amount
+          .price
+            display: inline-block
+            margin-right: .5rem
+            margin-bottom: 0
+          .delivery-icon
+            background-color: green
+            border-radius: 50%
+            padding: 2px
+            > img
+              width: 15px
+              height: 15px
+              position: relative
+              top: 2px
+
+  @include media-width-min(md)
+    .product-item
+      display: flex
+      &-img
+        .item-image
+          width: 160px
+      &-info
+        width: 100%
+        &-options
+          &.location
+            color: #666666
+            float: right
+            margin: 32px 32px 0 0
