@@ -87,6 +87,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
+            "codeCoverage": true,
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
@@ -98,7 +99,20 @@
             "styles": [
               "src/styles.sass"
             ],
-            "scripts": []
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/sass"
+              ]
+            },
+            "scripts": [],
+            "codeCoverageExclude": [
+              "src/app/**/*.action.ts",
+              "src/app/**/*.selector.ts",
+              "src/app/**/*.state.ts",
+              "src/app/**/*.model.ts",
+              "src/app/**/*.facade.ts",
+              "src/app/**/*.interface.ts"
+            ]
           }
         },
         "lint": {
