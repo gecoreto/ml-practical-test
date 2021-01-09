@@ -1,15 +1,17 @@
 <div class="item-detail-container p-4">
-    <div class="item-detail-container-column left">
-        <figure class="item-img">
-            <img
-                src="https://http2.mlstatic.com/D_NQ_NP_805950-MCO40352919808_012020-O.webp"
-                class="product-item-img__image"
-                alt="Celular iPhone 11 128gb Nuevo 100% Original Y Sellada ">
-        </figure>
-        <div class="specs">
-            <h3 class="specs-title">Descripción del producto</h3>
-            <p class="specs-content">
-                CONTENIDO DE LA CAJA:
+    <ng-container *ngIf="(working$ | async); else !!(product$ | async) ? content : empty"></ng-container>
+    <ng-template #content>
+        <div class="item-detail-container-column left">
+            <figure class="item-img">
+                <img
+                    src="https://http2.mlstatic.com/D_NQ_NP_805950-MCO40352919808_012020-O.webp"
+                    class="product-item-img__image"
+                    alt="Celular iPhone 11 128gb Nuevo 100% Original Y Sellada ">
+            </figure>
+            <div class="specs">
+                <h3 class="specs-title">Descripción del producto</h3>
+                <p class="specs-content">
+                    CONTENIDO DE LA CAJA:
 
                 -IPHONE
                 -CABLE LIGHTNING A USB
@@ -21,30 +23,34 @@
                 Peso: 164gr
                 Material: Glass front (Gorilla Glass), glass back (Gorilla Glass), aluminum frame
                 Apple Pay (Visa, MasterCard, AMEX certified)
-            </p>
-        </div>
-    </div>
-    <div class="item-detail-container-column short-description">
-        <div class="short-description-title">
-            <div class="secodary">
-                <span class="ui-pdp-subtitle">Nuevo  |  10 vendidos</span>
+                </p>
             </div>
-            <h3 class="principal">Celular Apple iPhone 12 128gb</h3>
         </div>
-        <div class="short-description-price">
-            <h1>$ 100.000.00</h1>
+        <div class="item-detail-container-column short-description">
+            <div class="short-description-title">
+                <div class="secodary">
+                    <span class="ui-pdp-subtitle">Nuevo  |  10 vendidos</span>
+                </div>
+                <h3 class="principal">Celular Apple iPhone 12 128gb</h3>
+            </div>
+            <div class="short-description-price">
+                <h1>$ 100.000.00</h1>
+            </div>
+            <div class="short-description-btns">
+                <button
+                    class="ml-btn-primary mb-1"
+                    type="button">
+                    Comprar
+                </button>
+                <button
+                    class="ml-btn-secondary"
+                    type="button">
+                    Agregar al carrito
+                </button>
+            </div>
         </div>
-        <div class="short-description-btns">
-            <button
-                class="ml-btn-primary mb-1"
-                type="button">
-                Comprar
-            </button>
-            <button
-                class="ml-btn-secondary"
-                type="button">
-                Agregar al carrito
-            </button>
-        </div>
-    </div>
+    </ng-template>
+    <ng-template #empty>
+        Producto no encontrado
+    </ng-template>
 </div>

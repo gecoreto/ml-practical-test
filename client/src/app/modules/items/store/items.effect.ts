@@ -28,4 +28,22 @@ export class ItemsEffect {
       )
     )
   );
+
+  fetchDetailProductEffect$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(actions.fetchProductDetail),
+      switchMap((action) =>
+        this.service.fetchProductDetail(action.id).pipe(
+          map((product) => actions.fetchProductDetailSuccess({ product })),
+          catchError((error: HttpErrorResponse) =>
+            of(
+              actions.fetchProductDetailError({
+                msg: error.message.toString(),
+              })
+            )
+          )
+        )
+      )
+    )
+  );
 }

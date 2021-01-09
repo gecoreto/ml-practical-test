@@ -8,6 +8,11 @@ export const itemsSelector = createSelector(
   (state: ItemsState) => state.items
 );
 
+export const productSelector = createSelector(
+  itemssState,
+  (state: ItemsState) => state.product
+);
+
 export const workingSelector = createSelector(
   itemssState,
   (state: ItemsState) => state.working

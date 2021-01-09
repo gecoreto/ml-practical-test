@@ -15,3 +15,18 @@ export const fetchSearchProductsError = createAction(
   '[Global/UI] fetch search products error',
   props<{ msg: string }>()
 );
+
+export const fetchProductDetail = createAction(
+  '[Global/UI] fetch product detail',
+  props<{ id: string }>()
+);
+
+export const fetchProductDetailSuccess = createAction(
+  '[Global/UI] fetch product detail success',
+  props<{ product: ItemsI }>()
+);
+
+export const fetchProductDetailError = createAction(
+  '[Global/UI] fetch product detail error',
+  props<{ msg: string }>()
+);

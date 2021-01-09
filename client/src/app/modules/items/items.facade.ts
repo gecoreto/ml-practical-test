@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ItemsI } from './entities/items.entity';
-import { fetchSearchProducts } from './store/items.actions';
-import { itemsSelector, workingSelector } from './store/items.selector';
+import { fetchProductDetail, fetchSearchProducts } from './store/items.actions';
+import { itemsSelector, workingSelector, productSelector } from './store/items.selector';
 
 @Injectable()
 export class ItemsFacade {
   public items$: Observable<ItemsI[]> = this.store.pipe(select(itemsSelector));
+  public product$: Observable<ItemsI> = this.store.pipe(select(productSelector));
 
   public working$: Observable<boolean> = this.store.pipe(
     select(workingSelector)
@@ -17,5 +18,9 @@ export class ItemsFacade {
 
   public fetchSearchProducts(query: string): void {
     this.store.dispatch(fetchSearchProducts({ query }));
+  }
+
+  public fetchProductDetail(id: string): void {
+    this.store.dispatch(fetchProductDetail({ id }));
   }
 }

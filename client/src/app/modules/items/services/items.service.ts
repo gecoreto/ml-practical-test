@@ -14,4 +14,11 @@ export class ItemsService {
     // return this.http.get<any>(url);
     return of([{ name: '' }, { name: '' }]);
   }
+
+  public fetchProductDetail(id: string): Observable<ItemsI> {
+    const url = ENV.api.detailProduct;
+
+    // return this.http.get<any>(url);
+    return of({ name: '' });
+  }
 }

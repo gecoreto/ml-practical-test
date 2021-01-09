@@ -5,7 +5,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -14,12 +15,19 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   public formG: FormGroup;
-  constructor(private router: Router, private formBuilder: FormBuilder) {}
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.formG = this.formBuilder.group({
       searchControl: [null, [Validators.required]],
     });
+    this.route.queryParams
+      .pipe(filter(({ search }) => !!search))
+      .subscribe(({ search }) => this.searchControl.patchValue(search));
   }
 
   public search(): void {
