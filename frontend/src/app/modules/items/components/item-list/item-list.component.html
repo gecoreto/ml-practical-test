@@ -5,41 +5,38 @@
         </ng-container>
     </ng-container>
     <ng-template #content>
-        <pre>
-            {{  (items$ | async) | json }}
-        </pre>
         <div
-            *ngFor="let item of [1,1,1]"
-            [routerLink]="['/items', 2]"
+            *ngFor="let item of (items$ | async)"
+            [routerLink]="['/items', item.id]"
             class="product-item">
             <div class="product-item-img">
                 <figure>
                     <img
-                        src="https://http2.mlstatic.com/D_NQ_NP_805950-MCO40352919808_012020-O.webp"
+                        [src]="item.picture"
                         class="item-image"
-                        alt="Celular iPhone 11 128gb Nuevo 100% Original Y Sellada ">
+                        [alt]="item.title">
                 </figure>
             </div>
             <div class="product-item-info">
-                <div class="product-item-info-options location">Bogotá</div>
+                <div class="product-item-info-options location">{{ item.city_name | titlecase }}</div>
                 <div class="product-item-info-options amount">
-                    <h2 class="price">$ 300.000</h2>
-                    <span class="delivery-icon">
+                    <h2 class="price">
+                        {{ item.price.amount | currency:item.price.amount.currency }}
+                    </h2>
+                    <span
+                        *ngIf="item.free_shipping"
+                        class="delivery-icon">
                         <img
                             src="./assets/img/track.svg"
                             alt="Envio">
                     </span>
                 </div>
                 <div class="product-item-info-options">
-                    <h3 class="m-0">
-                        Celular iPhone 11 128gb Nuevo 100% Original Y Sellada
-                    </h3>
+                    <h3 class="m-0">{{ item.title }}</h3>
                 </div>
-                
+
             </div>
         </div>
     </ng-template>
-    <ng-template #empty>
-        Bienvenido
-    </ng-template>
+    <ng-template #empty>Bienvenido</ng-template>
 </div>

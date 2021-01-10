@@ -1,7 +1,6 @@
 export const environment = {
   production: true,
   api: {
-    searchProducts: '',
-    detailProduct: '',
+    server_url: 'http://localhost:8080/api/items',
   },
 };

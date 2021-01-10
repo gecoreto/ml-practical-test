@@ -4,6 +4,7 @@ const path = require('path');
 const port = process.env.PORT || 8080;
 const app = express();
 const api = require('./backend/api');
+const cors = require('cors');
 
 /**
  * FRONTEND
@@ -12,6 +13,8 @@ app.use(favicon(__dirname + '/www/favicon.ico'));
 app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, 'www')));
 app.use(express.static(path.join(__dirname, 'coverage/frontend')));
+app.use(cors({origin: '*'}));
+
 app.get('/ping', function (req, res) {
  return res.send('pong');
 });

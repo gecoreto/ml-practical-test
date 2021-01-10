@@ -5,8 +5,7 @@
 export const environment = {
   production: false,
   api: {
-    searchProducts: '',
-    detailProduct: '',
+    server_url: 'http://localhost:8080/api/items',
   },
 };
 

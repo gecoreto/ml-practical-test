@@ -21,7 +21,11 @@ function mapItemsOfSearch(body) {
 }
 
 function mapMercadolibreItem(body) {
-    const { id, title, price, thumbnail, condition, shipping: { free_shipping }, currency_id } = body;
+    const {
+        id, title, price, thumbnail,
+        condition, shipping: { free_shipping }, currency_id, address, pictures
+    } = body;
+
     return {
         id,
         title,
@@ -30,9 +34,10 @@ function mapMercadolibreItem(body) {
             amount: price,
             decimals: null
         },
-        picture: thumbnail,
-        condition,
-        free_shipping
+        picture: (!!pictures) ? pictures[0].secure_url : thumbnail,
+        condition: condition === 'new' ? 'Nuevo' : 'Usado',
+        free_shipping,
+        city_name: (!!address) ? address.city_name : null
     };
 }
 

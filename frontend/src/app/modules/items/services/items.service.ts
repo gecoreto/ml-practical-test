@@ -1,3 +1,4 @@
+import { map } from 'rxjs/operators';
 import { ItemsI } from './../entities/items.entity';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -9,16 +10,14 @@ export class ItemsService {
   constructor(private http: HttpClient) {}
 
   public fetchSearchProducts(query: string): Observable<ItemsI[]> {
-    const url = ENV.api.searchProducts;
-
-    // return this.http.get<any>(url);
-    return of([{ name: '' }, { name: '' }]);
+    const url = ENV.api.server_url + `?q=${query}`;
+    return this.http
+      .get<any>(url)
+      .pipe(map(({ items }) => items.filter((prod, i) => i < 4)));
   }
 
   public fetchProductDetail(id: string): Observable<ItemsI> {
-    const url = ENV.api.detailProduct;
-
-    // return this.http.get<any>(url);
-    return of({ name: '' });
+    const url = ENV.api.server_url + `/${id}`;
+    return this.http.get<any>(url).pipe(map(({ item }) => item));
   }
 }
