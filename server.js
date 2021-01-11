@@ -23,6 +23,10 @@ app.get('/items', function (req, res) {
   res.sendFile(path.join(__dirname, 'www', 'index.html'));
 });
 
+app.get('/items/:id', function (req, res) {
+  res.sendFile(path.join(__dirname, 'www', 'index.html'));
+});
+
 app.get('/coverage', function (req, res) {
   res.sendFile(path.join(__dirname, 'coverage/frontend', 'index.html'));
 });
