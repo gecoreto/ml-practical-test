@@ -31,6 +31,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public search(): void {
+    document.getElementById('nav-search-input').blur();
     this.router.navigate(['/items'], {
       queryParams: { search: this.searchControl.value },
     });

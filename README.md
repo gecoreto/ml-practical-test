@@ -4,7 +4,7 @@ Dentro de este repositorio se encuentra el frontend y el backend.
 
 # Frontend
 
-El frontend fue desarrollado con Angular, se puedes ver en el siguiente directorio:
+El frontend fue desarrollado con Angular 11, se puedes ver en el siguiente directorio:
 
 [/frontend](https://github.com/gecoreto/ml-practical-test/tree/main/frontend)
 
@@ -38,4 +38,8 @@ Ejecutar `npm run lint`
 
 Ejecutar `npm run test`
 
+
+## Ver en servidor de heroku
+
+[Click aquí](https://ml-practical-test.herokuapp.com/items)
 
