@@ -41,5 +41,11 @@ Ejecutar `npm run test`
 
 ## Ver en servidor de heroku
 
-[Click aquí](https://ml-practical-test.herokuapp.com/items)
+Web: [https://ml-practical-test.herokuapp.com/items](https://ml-practical-test.herokuapp.com/items)
+
+### API REST en Heroku
+
+Busqueda: [https://ml-practical-test.herokuapp.com/api/items?q=iphone](https://ml-practical-test.herokuapp.com/api/items?q=iphone)
+
+Detalle: [https://ml-practical-test.herokuapp.com/api/items/MLA903699196](https://ml-practical-test.herokuapp.com/api/items/MLA903699196)
 
