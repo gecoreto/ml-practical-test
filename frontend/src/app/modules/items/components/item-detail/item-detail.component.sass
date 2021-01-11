@@ -2,7 +2,7 @@
 
 .item-detail-container
   display: flex
-  flex-direction: column
+  flex-direction: column-reverse
   background: var(--ml-white-color)
 
   &-column
@@ -15,6 +15,8 @@
       &-btns
         display: flex
         flex-direction: column
+        &.desktop
+          display: none
 
   @include media-width-min(md)
     flex-direction: row
@@ -23,6 +25,12 @@
     &-column
       &.left
         width: 80%
+      .short-description
+        &-btns
+          &.mobile
+            display: none
+          &.desktop
+            display: flex
 
     .card-loader
       &-item-1,
@@ -34,8 +42,9 @@
         width: 70%
         height: 300px
       &-item-2
-        width: 27%
+        width: calc( 30% - 30px )
         height: 160px
+        left: initial
         right: 10px
       &-item-3
         width: 70%

@@ -13,6 +13,9 @@
                         class="product-item-img__image"
                         [alt]="item.title">
                 </figure>
+                <div class="short-description-btns mobile">
+                    <ng-template [ngTemplateOutlet]="buttons"></ng-template>
+                </div>
                 <div class="specs">
                     <h3 class="specs-title">Descripción del producto</h3>
                     <p class="specs-content">{{ item.description }}</p>
@@ -32,20 +35,23 @@
                         {{ item.price.amount | currency:item.price.amount.currency }}
                     </h1>
                 </div>
-                <div class="short-description-btns">
-                    <button
-                        class="ml-btn-primary mb-1"
-                        type="button">
-                        Comprar
-                    </button>
-                    <button
-                        class="ml-btn-secondary"
-                        type="button">
-                        Agregar al carrito
-                    </button>
+                <div class="short-description-btns desktop">
+                    <ng-template [ngTemplateOutlet]="buttons"></ng-template>
                 </div>
             </div>
         </ng-container>
     </ng-template>
     <ng-template #empty>Producto no encontrado</ng-template>
+    <ng-template #buttons>
+        <button
+            class="ml-btn-primary mb-1"
+            type="button">
+            Comprar
+        </button>
+        <button
+            class="ml-btn-secondary"
+            type="button">
+            Agregar al carrito
+        </button>
+    </ng-template>
 </div>

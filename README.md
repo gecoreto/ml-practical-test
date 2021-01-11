@@ -4,15 +4,15 @@ Dentro de este repositorio se encuentra el frontend y el backend.
 
 # Frontend
 
-El frontend fue desarrollado con Angular, se puedes ver en la siguiente carpeta:
+El frontend fue desarrollado con Angular, se puedes ver en el siguiente directorio:
 
-[https://github.com/gecoreto/ml-practical-test/tree/main/frontend](https://github.com/gecoreto/ml-practical-test/tree/main/frontend)
+[/frontend](https://github.com/gecoreto/ml-practical-test/tree/main/frontend)
 
 # Backend
 
-El API rest se desarrollo en Nodejs y se puede ver en la siguiente carpeta:
+El API rest se desarrollo en Nodejs y se puede ver en el siguiente directorio:
 
-[https://github.com/gecoreto/ml-practical-test/tree/main/backend](https://github.com/gecoreto/ml-practical-test/tree/main/backend)
+[/backend](https://github.com/gecoreto/ml-practical-test/tree/main/backend)
 
 ## Como correr el proyecto
 
@@ -30,6 +30,12 @@ FRONTEND WEB: [http://localhost:8080/items](http://localhost:8080/items)
 
 COVERAGE: [http://localhost:8080/coverage](http://localhost:8080/coverage)
 
+## Ejecutar linters
 
+Ejecutar `npm run lint`
+
+## Ejecutar unit tests
+
+Ejecutar `npm run test`
 
 

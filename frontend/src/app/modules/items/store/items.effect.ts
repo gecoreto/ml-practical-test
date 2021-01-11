@@ -1,15 +1,20 @@
+import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { ItemsService } from './../services/items.service';
 import * as actions from './items.actions';
 
 @Injectable()
 export class ItemsEffect {
-  constructor(private actions$: Actions, private service: ItemsService) {}
+  constructor(
+    private actions$: Actions,
+    private service: ItemsService,
+    private router: Router
+  ) {}
 
   fetchSearchProductsEffect$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
@@ -19,13 +24,15 @@ export class ItemsEffect {
           map(({ items, categories }) =>
             actions.fetchSearchProductsSuccess({ items, categories })
           ),
-          catchError((error: HttpErrorResponse) =>
-            of(
+          catchError((error: HttpErrorResponse) => {
+            console.log('Error fetchSearchProductsEffect', error);
+            this.router.navigate(['error']);
+            return of(
               actions.fetchSearchProductsError({
                 msg: error.message.toString(),
               })
-            )
-          )
+            );
+          })
         )
       )
     )
@@ -37,13 +44,15 @@ export class ItemsEffect {
       switchMap((action) =>
         this.service.fetchProductDetail(action.id).pipe(
           map((product) => actions.fetchProductDetailSuccess({ product })),
-          catchError((error: HttpErrorResponse) =>
-            of(
+          catchError((error: HttpErrorResponse) => {
+            console.log('Error fetchDetailProductEffect', error);
+            this.router.navigate(['error']);
+            return of(
               actions.fetchProductDetailError({
                 msg: error.message.toString(),
               })
-            )
-          )
+            );
+          })
         )
       )
     )
