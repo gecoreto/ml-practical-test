@@ -13,7 +13,9 @@ function mapItemsOfSearch(body) {
                 ? filters.find((cat) => cat.id === 'category')
                     .values
                     .reduce(
-                        (prev, { path_from_root }) => [...path_from_root.map(({ name }) => name)],
+                        (prev, { path_from_root }) => [
+                            ...prev,
+                            ...path_from_root.map(({ name }) => name)],
                         []
                     )
                 : [],
