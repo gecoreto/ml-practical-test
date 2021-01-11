@@ -37,4 +37,10 @@ describe('ItemListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call function ngOnDestroy', () => {
+    spyOn(component, 'ngOnDestroy');
+    component.ngOnDestroy();
+    expect(component.ngOnDestroy).toHaveBeenCalled();
+  });
 });

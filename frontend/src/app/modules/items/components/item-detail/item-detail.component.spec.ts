@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { from } from 'rxjs';
 import { ItemsFacadeMock } from 'test-helpers/mocks/facade/items.facade.mock';
 import { ItemsFacade } from './../../items.facade';
 import { ItemDetailComponent } from './item-detail.component';
@@ -19,6 +19,12 @@ describe('ItemDetailComponent', () => {
             snapshot: {
               params: 1,
             },
+          },
+        },
+        {
+          provide: Title,
+          useValue: {
+            setTitle: (name: string) => {},
           },
         },
         {

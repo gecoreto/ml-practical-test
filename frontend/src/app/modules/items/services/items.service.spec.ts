@@ -61,7 +61,7 @@ describe('ItemsService', () => {
     expect(req.request.method).toBe('GET');
   });
 
-  it('should to call fetchSearchProducts', () => {
+  it('should to call fetchProductDetail', () => {
     const { service, httpTestingController } = setup();
     const id = 'MLA898581193';
     const url = ENV.api.server_url + `/${id}`;

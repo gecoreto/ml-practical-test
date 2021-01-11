@@ -6,10 +6,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.sass'],
 })
-export class LayoutComponent implements OnInit {
+export class LayoutComponent {
   constructor(private router: Router) {}
-
-  ngOnInit(): void {
-    // this.router.navigateByUrl('items');
-  }
 }
