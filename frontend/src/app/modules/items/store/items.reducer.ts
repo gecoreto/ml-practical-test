@@ -7,15 +7,20 @@ const featureReducer = createReducer(
   on(actions.fetchSearchProducts, (state: ItemsState) => ({
     ...state,
     items: [],
+    categories: [],
     working: true,
     msg: '',
   })),
-  on(actions.fetchSearchProductsSuccess, (state: ItemsState, { items }) => ({
-    ...state,
-    product: null,
-    working: false,
-    items,
-  })),
+  on(
+    actions.fetchSearchProductsSuccess,
+    (state: ItemsState, { items, categories }) => ({
+      ...state,
+      product: null,
+      working: false,
+      items,
+      categories,
+    })
+  ),
   on(actions.fetchProductDetail, (state: ItemsState) => ({
     ...state,
     working: true,

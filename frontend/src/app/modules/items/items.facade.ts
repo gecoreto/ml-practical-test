@@ -3,12 +3,22 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ItemsI } from './entities/items.entity';
 import { fetchProductDetail, fetchSearchProducts } from './store/items.actions';
-import { itemsSelector, workingSelector, productSelector } from './store/items.selector';
+import {
+  itemsSelector,
+  workingSelector,
+  productSelector,
+  categoriesSelector,
+} from './store/items.selector';
 
 @Injectable()
 export class ItemsFacade {
   public items$: Observable<ItemsI[]> = this.store.pipe(select(itemsSelector));
-  public product$: Observable<ItemsI> = this.store.pipe(select(productSelector));
+  public product$: Observable<ItemsI> = this.store.pipe(
+    select(productSelector)
+  );
+  public categories$: Observable<string[]> = this.store.pipe(
+    select(categoriesSelector)
+  );
 
   public working$: Observable<boolean> = this.store.pipe(
     select(workingSelector)

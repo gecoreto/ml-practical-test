@@ -6,6 +6,7 @@ import { ItemsI } from 'src/app/modules/items/entities/items.entity';
 export class ItemsFacadeMock {
   public items$: Observable<ItemsI[]> = new BehaviorSubject([]);
   public product$: Observable<ItemsI> = new BehaviorSubject(null);
+  public categories$: Observable<string[]> = new BehaviorSubject([]);
 
   public working$: Observable<boolean> = new BehaviorSubject(false);
 

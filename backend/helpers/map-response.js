@@ -12,8 +12,9 @@ function mapItemsOfSearch(body) {
             (filters.length > 0)
                 ? filters.find((cat) => cat.id === 'category')
                     .values
-                    .map(
-                        ({ path_from_root }) => path_from_root.map(({ name }) => name)
+                    .reduce(
+                        (prev, { path_from_root }) => [...path_from_root.map(({ name }) => name)],
+                        []
                     )
                 : [],
         items: results.map((item) => mapMercadolibreItem(item))

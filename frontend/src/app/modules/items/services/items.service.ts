@@ -9,11 +9,16 @@ import { Observable, of } from 'rxjs';
 export class ItemsService {
   constructor(private http: HttpClient) {}
 
-  public fetchSearchProducts(query: string): Observable<ItemsI[]> {
+  public fetchSearchProducts(
+    query: string
+  ): Observable<{ items: ItemsI[]; categories: string[] }> {
     const url = ENV.api.server_url + `?q=${query}`;
-    return this.http
-      .get<any>(url)
-      .pipe(map(({ items }) => items.filter((prod, i) => i < 4)));
+    return this.http.get<any>(url).pipe(
+      map(({ items, categories }) => ({
+        items: items.filter((prod, i) => i < 4),
+        categories,
+      }))
+    );
   }
 
   public fetchProductDetail(id: string): Observable<ItemsI> {

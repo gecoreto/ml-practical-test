@@ -8,7 +8,7 @@ export const fetchSearchProducts = createAction(
 
 export const fetchSearchProductsSuccess = createAction(
   '[Global/UI] fetch search products success',
-  props<{ items: ItemsI[] }>()
+  props<{ items: ItemsI[]; categories: string[] }>()
 );
 
 export const fetchSearchProductsError = createAction(

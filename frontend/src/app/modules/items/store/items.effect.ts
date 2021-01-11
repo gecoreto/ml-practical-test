@@ -16,7 +16,9 @@ export class ItemsEffect {
       ofType(actions.fetchSearchProducts),
       switchMap((action) =>
         this.service.fetchSearchProducts(action.query).pipe(
-          map((items) => actions.fetchSearchProductsSuccess({ items })),
+          map(({ items, categories }) =>
+            actions.fetchSearchProductsSuccess({ items, categories })
+          ),
           catchError((error: HttpErrorResponse) =>
             of(
               actions.fetchSearchProductsError({
