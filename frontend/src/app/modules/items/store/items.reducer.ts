@@ -39,7 +39,10 @@ const featureReducer = createReducer(
       working: false,
       msg,
     })
-  )
+  ),
+  on(actions.itemsClearStore, (state: ItemsState) => ({
+    ...initialItemsState,
+  }))
 );
 
 export const itemsReducer = (state: ItemsState, action: Action): ItemsState => {

@@ -16,6 +16,7 @@ export class ItemListComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams
       .pipe(
+        tap(() => this.facade.itemsClearStore()),
         filter(({ search }) => !!search)
       )
       .subscribe(({ search }) => this.facade.fetchSearchProducts(search));

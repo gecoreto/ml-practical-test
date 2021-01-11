@@ -30,3 +30,7 @@ export const fetchProductDetailError = createAction(
   '[Global/UI] fetch product detail error',
   props<{ msg: string }>()
 );
+
+export const itemsClearStore = createAction(
+  '[Global/UI] clear store'
+);

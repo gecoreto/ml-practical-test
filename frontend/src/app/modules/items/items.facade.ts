@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ItemsI } from './entities/items.entity';
-import { fetchProductDetail, fetchSearchProducts } from './store/items.actions';
+import { fetchProductDetail, fetchSearchProducts, itemsClearStore } from './store/items.actions';
 import {
   itemsSelector,
   workingSelector,
@@ -32,5 +32,9 @@ export class ItemsFacade {
 
   public fetchProductDetail(id: string): void {
     this.store.dispatch(fetchProductDetail({ id }));
+  }
+
+  public itemsClearStore(): void {
+    this.store.dispatch(itemsClearStore());
   }
 }
