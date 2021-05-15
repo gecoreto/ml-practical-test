@@ -1,0 +1,51 @@
+@import '../../../sass/utils'
+
+.item-detail-container
+  display: flex
+  flex-direction: column-reverse
+  background: var(--ml-white-color)
+
+  &-column
+    &.left
+      .item-img > img
+        width: 100%
+        max-width: 500px
+
+    .short-description
+      &-btns
+        display: flex
+        flex-direction: column
+        &.desktop
+          display: none
+
+  @include media-width-min(md)
+    flex-direction: row
+    position: relative
+    min-height: 520px
+    &-column
+      &.left
+        width: 80%
+      .short-description
+        &-btns
+          &.mobile
+            display: none
+          &.desktop
+            display: flex
+
+    .card-loader
+      &-item-1,
+      &-item-2,
+      &-item-3
+        position: absolute
+        left: 10px
+      &-item-1
+        width: 70%
+        height: 300px
+      &-item-2
+        width: calc( 30% - 30px )
+        height: 160px
+        left: initial
+        right: 10px
+      &-item-3
+        width: 70%
+        top: 340px

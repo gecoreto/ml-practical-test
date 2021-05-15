@@ -1,0 +1,42 @@
+<div class="item-list-container p-1">
+    <ng-container *ngIf="(working$ | async); else ((items$ | async).length > 0) ? content : empty">
+        <ng-container *ngFor="let item of [1,1,1,1]">
+            <div class="card-loader card-loader-item-1"></div>
+        </ng-container>
+    </ng-container>
+    <ng-template #content>
+        <div
+            *ngFor="let item of (items$ | async)"
+            [routerLink]="['/items', item.id]"
+            class="product-item">
+            <div class="product-item-img">
+                <figure>
+                    <img
+                        [src]="item.picture"
+                        class="item-image"
+                        [alt]="item.title">
+                </figure>
+            </div>
+            <div class="product-item-info">
+                <div class="product-item-info-options location">{{ item.city_name | titlecase }}</div>
+                <div class="product-item-info-options amount">
+                    <h2 class="price">
+                        {{ item.price.amount | currency:item.price.amount.currency }}
+                    </h2>
+                    <span
+                        *ngIf="item.free_shipping"
+                        class="delivery-icon">
+                        <img
+                            src="./assets/img/track.svg"
+                            alt="Envio">
+                    </span>
+                </div>
+                <div class="product-item-info-options">
+                    <h3 class="m-0">{{ item.title }}</h3>
+                </div>
+
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #empty>Bienvenido</ng-template>
+</div>
