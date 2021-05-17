@@ -3,7 +3,7 @@ import axios from "axios";
 const SERVER = 'http://localhost:8080/api/items'
 
 // A mock function to mimic making an async request for data
-export async function fetchProducts(query = 'ps5') {
+export async function fetchProducts(query) {
   const url = SERVER + `?q=${query}`;
   const { data } = await axios.get(url);
   const { items, categories } = data;
@@ -13,4 +13,13 @@ export async function fetchProducts(query = 'ps5') {
       categories,
     }
   })
+}
+
+export async function fetchProductDetailById(id) {
+  const url = SERVER + `/${id}`;
+  const { data } = await axios.get(url);
+  const { item: product } = data;
+  return {
+    product
+  }
 }

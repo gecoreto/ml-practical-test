@@ -1,24 +1,87 @@
-import React from 'react'
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchSearchProducts, selectWorking } from '../store/itemsSlice';
-import './item-list.sass'
+import { bindActionCreators } from '@reduxjs/toolkit';
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from "react-router-dom";
+import trackImg from '../../../assets/img/track.svg';
+import currencyFormat from '../../../utils/format';
+import { fetchSearchProducts, selectItems, selectWorking } from '../store/itemsSlice';
+import './item-list.sass';
 
-export const Loading = () => {
-  return [1, 2, 3, 4].map((number) =>
-    <div key={number.toString()} className="card-loader card-loader-item-1"></div>
-  )
-}
+const Loading = () => [1, 2, 3, 4].map((number) =>
+  <div key={number.toString()} className="card-loader card-loader-item-1"></div>
+)
 
-export const Itemlist = (props) => {
-  const working = useSelector(selectWorking);
-  // const dispatch = useDispatch();
-  // dispatch(fetchSearchProducts())
-  console.log('paso')
-  return working
+const DeliveryIcon = () => (
+  <span className="delivery-icon">
+    <img
+      src={trackImg}
+      alt="Envio" />
+  </span>
+)
+
+class Itemlist extends React.Component {
+
+  componentDidMount() {
+    const query = new URLSearchParams(this.props.location.search)
+    this.fetchProducts(query.get('search'));
+  }
+
+  fetchProducts(search) {
+    if (!!search) {
+      this.props.fetchSearchProducts(search);
+    }
+  }
+
+  render() {
+    const { items, working } = this.props;
+    let { url } = this.props.match;
+
+    return working
       ? <Loading />
       : (
-        <h1>Itemlist</h1>
+        <div className="item-list-container p-1">
+          {(items.length === 0)
+            ? 'Bienvenido'
+            : items.map((item) =>
+              <Link key={item.id.toString()} to={`${url}/${item.id}`}>
+                <div className="product-item">
+                  <div className="product-item-img">
+                    <figure>
+                      <img
+                        src={item.picture}
+                        className="item-image"
+                        alt={item.title} />
+                    </figure>
+                  </div>
+                  <div className="product-item-info">
+                    <div className="product-item-info-options location">{item.city_name}</div>
+                    <div className="product-item-info-options amount">
+                      <h2 className="price">
+                        {/* {{ item.price.amount | currency:item.price.amount.currency }} */}
+                        {currencyFormat(item.price.amount)}
+                      </h2>
+                      {item.free_shipping ? <DeliveryIcon /> : ''}
+                    </div>
+                    <div className="product-item-info-options">
+                      <h3 className="m-0">{item.title}</h3>
+                    </div>
+                  </div>
+                </div>
+              </Link>)}
+        </div>
       );
+  }
 }
 
-export default Itemlist
+function mapStateToProps(state) {
+  return {
+    items: selectItems(state),
+    working: selectWorking(state)
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchSearchProducts }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Itemlist)
