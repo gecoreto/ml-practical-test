@@ -1,7 +1,16 @@
-import React from 'react'
-import './error.sass'
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { cleanItems } from '../../items/store/itemsSlice';
+import './error.sass';
 
 export const Error = () => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const goToHome = () => {
+    dispatch(cleanItems())
+    history.push(`/`)
+  };
   return (
     <div className="app-error-container container p-4">
       <h1>Estamos presentando incovenientes</h1>
@@ -22,6 +31,7 @@ export const Error = () => {
       </section>
       <div className="link-container">
         <button
+          onClick={() => goToHome()}
           className="ml-btn-primary">
           Volver al inicio
         </button>

@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
-import { Link, useHistory, withRouter } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import searchImg from '../../../assets/img/search.svg';
+import { cleanItems } from '../../items/store/itemsSlice';
 import './header.sass';
 
 export const Header = () => {
     const [search, setSearch] = useState('');
     const history = useHistory();
+    const dispatch = useDispatch();
+    const goToHome = () => {
+        dispatch(cleanItems())
+        history.push(`/`)
+      };
     const handleSubmit = (e) => {
         let queryString = "search=" + search;
         history.replace(`/items?${queryString}`);
@@ -17,9 +24,9 @@ export const Header = () => {
             role="banner"
             className="ml-header-container py-1">
             <nav className="navbar container">
-                <Link to="/" className="navbar-brand mr-2" />
+                <a id="nav-search-brand" className="navbar-brand mr-2" onClick={() => goToHome()} />
                 <div className="navbar-search">
-                    <form onSubmit={(e) => handleSubmit(e)}>
+                    <form id="nav-search-form" onSubmit={(e) => handleSubmit(e)}>
                         <input
                             id="nav-search-input"
                             className="nav-search-input"
@@ -29,6 +36,7 @@ export const Header = () => {
                             onChange={(e) => setSearch(e.target.value)}
                             aria-label="Search" />
                         <button
+                            id="nav-search-button"
                             className="nav-search-btn"
                             type="submit">
                             <img
@@ -42,4 +50,4 @@ export const Header = () => {
     );
 }
 
-export default withRouter(Header)
+export default Header

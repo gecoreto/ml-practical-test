@@ -1,7 +1,6 @@
 import { bindActionCreators } from '@reduxjs/toolkit';
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
 import trackImg from '../../../assets/img/track.svg';
 import currencyFormat from '../../../utils/format';
 import { fetchSearchProducts, selectItems, selectWorking } from '../store/itemsSlice';
@@ -32,6 +31,11 @@ class Itemlist extends React.Component {
     }
   }
 
+  goToDetail(url) {
+    let history = this.props.history;
+    history.push(url);
+  }
+
   render() {
     const { items, working } = this.props;
     let { url } = this.props.match;
@@ -43,31 +47,30 @@ class Itemlist extends React.Component {
           {(items.length === 0)
             ? 'Bienvenido'
             : items.map((item) =>
-              <Link key={item.id.toString()} to={`${url}/${item.id}`}>
-                <div className="product-item">
-                  <div className="product-item-img">
-                    <figure>
-                      <img
-                        src={item.picture}
-                        className="item-image"
-                        alt={item.title} />
-                    </figure>
+              <div key={item.id.toString()} className="product-item" onClick={() => this.goToDetail(`${url}/${item.id}`)}>
+                <div className="product-item-img">
+                  <figure>
+                    <img
+                      src={item.picture}
+                      className="item-image"
+                      alt={item.title} />
+                  </figure>
+                </div>
+                <div className="product-item-info">
+                  <div className="product-item-info-options location">{item.city_name}</div>
+                  <div className="product-item-info-options amount">
+                    <h2 className="price">
+                      {/* {{ item.price.amount | currency:item.price.amount.currency }} */}
+                      {currencyFormat(item.price.amount)}
+                    </h2>
+                    {item.free_shipping ? <DeliveryIcon /> : ''}
                   </div>
-                  <div className="product-item-info">
-                    <div className="product-item-info-options location">{item.city_name}</div>
-                    <div className="product-item-info-options amount">
-                      <h2 className="price">
-                        {/* {{ item.price.amount | currency:item.price.amount.currency }} */}
-                        {currencyFormat(item.price.amount)}
-                      </h2>
-                      {item.free_shipping ? <DeliveryIcon /> : ''}
-                    </div>
-                    <div className="product-item-info-options">
-                      <h3 className="m-0">{item.title}</h3>
-                    </div>
+                  <div className="product-item-info-options">
+                    <h3 className="m-0">{item.title}</h3>
                   </div>
                 </div>
-              </Link>)}
+              </div>
+            )}
         </div>
       );
   }

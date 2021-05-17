@@ -55,7 +55,7 @@ const Detail = ({ item }) => {
   )
 }
 
-const Loading = () => (
+export const Loading = () => (
   <div className="item-detail-container p-4">
     {[1, 2, 3, 4].map((number) =>
       <div key={number.toString()} className={`card-loader card-loader-item-${number}`}></div>
