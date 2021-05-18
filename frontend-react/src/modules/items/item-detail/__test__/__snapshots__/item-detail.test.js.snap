@@ -1,13 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Item detail component should test Header component 1`] = `ShallowWrapper {}`;
-
 exports[`ItemDetail component WHEN is loading THEN Loading should be 1`] = `ShallowWrapper {}`;
 
-exports[`ItemDetail component WHEN is loading THEN getProductList should be called 1`] = `ShallowWrapper {}`;
-
 exports[`ItemDetail component should test ItemDetail component 1`] = `ShallowWrapper {}`;
-
-exports[`ItemDetail component should test ItemDetail component 2`] = `ShallowWrapper {}`;
-
-exports[`ItemDetail component should test ItemDetail with working 1`] = `ShallowWrapper {}`;

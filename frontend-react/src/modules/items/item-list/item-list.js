@@ -88,3 +88,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Itemlist)
+
+export { Itemlist };

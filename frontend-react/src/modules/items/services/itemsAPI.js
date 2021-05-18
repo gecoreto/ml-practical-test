@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const SERVER = 'http://localhost:8080/api/items'
+export const SERVER = 'http://localhost:8080/api/items'
 
 // A mock function to mimic making an async request for data
 export async function fetchProducts(query) {

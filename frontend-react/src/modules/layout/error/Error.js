@@ -15,7 +15,7 @@ export const Error = () => {
     <div className="app-error-container container p-4">
       <h1>Estamos presentando incovenientes</h1>
       <p className="zoom-area">
-        <b>Oh no!</b>
+        <b>Oh no!</b><br/>
         Ha ocurrido un error. (Mapeo de errores...)
     </p>
       <section className="error-container">
@@ -32,6 +32,7 @@ export const Error = () => {
       <div className="link-container">
         <button
           onClick={() => goToHome()}
+          id="bnt-to-home"
           className="ml-btn-primary">
           Volver al inicio
         </button>
