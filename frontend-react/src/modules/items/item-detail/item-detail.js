@@ -20,9 +20,9 @@ export const ItemDetail = () => {
 
 const Detail = ({ item }) => {
   return (
-    <div className="item-detail-container p-4">
+    <div className="item-detail-container">
       <div className="item-detail-container-column left">
-        <figure className="item-img">
+        <figure className="item-img m-0">
           <img
             src={item.picture}
             className="product-item-img__image"
@@ -34,7 +34,7 @@ const Detail = ({ item }) => {
           <p className="specs-content">{item.description}</p>
         </div>
       </div>
-      <div className="item-detail-container-column short-description">
+      <div className="item-detail-container-column short-description rigth">
         <div className="short-description-title">
           <div className="secodary">
             <span className="ui-pdp-subtitle">

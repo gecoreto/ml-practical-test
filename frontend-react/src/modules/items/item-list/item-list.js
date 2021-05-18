@@ -43,27 +43,26 @@ class Itemlist extends React.Component {
     return working
       ? <Loading />
       : (
-        <div className="item-list-container p-1">
+        <div className="item-list-container px-3">
           {(items.length === 0)
-            ? 'Bienvenido'
+            ? <center>Bienvenido comienza tu busqueda</center>
             : items.map((item) =>
               <div id={item.id.toString()} key={item.id.toString()} className="product-item" onClick={() => this.goToDetail(`${url}/${item.id}`)}>
                 <div className="product-item-img">
-                  <figure>
-                    <img
-                      src={item.picture}
-                      className="item-image"
-                      alt={item.title} />
-                  </figure>
+                  <img
+                    src={item.picture}
+                    className="item-image"
+                    alt={item.title} />
                 </div>
                 <div className="product-item-info">
-                  <div className="product-item-info-options location">{item.city_name}</div>
+                  {/* <div className="product-item-info-options location">{item.city_name}</div> */}
                   <div className="product-item-info-options amount">
                     <h2 className="price">
                       {/* {{ item.price.amount | currency:item.price.amount.currency }} */}
                       {currencyFormat(item.price.amount)}
                     </h2>
                     {item.free_shipping ? <DeliveryIcon /> : ''}
+                    <span className="location">{item.city_name}</span>
                   </div>
                   <div className="product-item-info-options">
                     <h3 className="m-0">{item.title}</h3>

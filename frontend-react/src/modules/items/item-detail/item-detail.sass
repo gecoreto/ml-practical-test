@@ -4,12 +4,14 @@
   display: flex
   flex-direction: column-reverse
   background: var(--ml-white-color)
+  padding: 16px
 
   &-column
     &.left
       .item-img > img
         width: 100%
-        max-width: 500px
+        max-width: 680px
+        max-height: 680px
 
     .short-description
       &-btns
@@ -17,20 +19,41 @@
         flex-direction: column
         &.desktop
           display: none
+      &-price
+        > h1
+          margin: 0
+          line-height: 1
 
   @include media-width-min(md)
     flex-direction: row
     position: relative
     min-height: 520px
+    padding: 32px
     &-column
       &.left
-        width: 80%
+        width: 70%
+      &.rigth
+        width: 30%
       .short-description
         &-btns
           &.mobile
             display: none
           &.desktop
             display: flex
+        &-title
+          .principal
+            font-size: 24px
+            margin: 16px 0 32px
+        &-price
+          > h1
+            font-size: 46px
+            margin-bottom: 32px
+      .specs
+        &-title
+          font-size: 28px
+          margin: 32px 0
+        &-content
+          margin: 0
 
     .card-loader
       &-item-1,
