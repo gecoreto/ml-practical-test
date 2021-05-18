@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ItemDetail component WHEN is loading THEN Loading should be 1`] = `ShallowWrapper {}`;
+
+exports[`ItemDetail component should test ItemDetail component 1`] = `ShallowWrapper {}`;

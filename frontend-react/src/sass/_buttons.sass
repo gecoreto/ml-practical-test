@@ -1,0 +1,48 @@
+
+.ml-btn
+  font-weight: 600
+  line-height: 48px
+  padding: 0 24px
+  height: 48px
+  text-align: center
+  border-radius: 6px
+  -webkit-transition: .18s ease-out
+  transition: .18s ease-out
+  -webkit-transition-property: background,color
+  transition-property: background,color
+  display: inline-block
+  width: auto
+  -webkit-font-smoothing: antialiased
+  cursor: pointer
+
+  @include media-width-max(md)
+    width: 100%
+    max-width: 100%
+
+  &-primary
+    @extend .ml-btn
+    border-color: transparent
+    background-color: #3483fa
+    color: var(--ml-white-color)
+
+    &:not(:disabled):not(.disabled)
+      &:hover
+        border-color: transparent
+        background-color: #2968c8
+        color: #fff
+        -webkit-transition: background-color .2s ease-in
+        transition: background-color .2s ease-in
+
+  &-secondary
+    @extend .ml-btn
+    border-color: transparent
+    background-color: rgba(65,137,230,.15)
+    color: #3483fa
+
+    &:not(:disabled):not(.disabled)
+      &:hover
+        border-color: transparent
+        background-color: rgba(65,137,230,.2)
+        color: #3483fa
+        -webkit-transition: background-color .2s ease-in
+        transition: background-color .2s ease-in

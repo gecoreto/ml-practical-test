@@ -4,9 +4,9 @@ Dentro de este repositorio se encuentra el frontend y el backend.
 
 # Frontend
 
-El frontend fue desarrollado con Angular 11, se puedes ver en el siguiente directorio:
+El frontend fue desarrollado con React 17, se puedes ver en el siguiente directorio:
 
-[/frontend](https://github.com/gecoreto/ml-practical-test/tree/main/frontend)
+[/frontend-react](https://github.com/gecoreto/ml-practical-test/tree/main/frontend-react)
 
 # Backend
 
@@ -36,7 +36,7 @@ Ejecutar `npm run lint`
 
 ## Ejecutar unit tests
 
-Ejecutar `npm run test`
+Ejecutar `cd frontend-react/ && npm run test -- --coverage --watchAll=false`
 
 
 ## Ver en servidor de heroku
