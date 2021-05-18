@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Itemlist component should test Itemlist component 1`] = `ShallowWrapper {}`;

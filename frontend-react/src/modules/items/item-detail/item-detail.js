@@ -63,9 +63,9 @@ export const Loading = () => (
   </div>
 )
 
-const Empty = () => <div className="item-detail-container p-4">Producto no encontrado</div>
+export const Empty = () => <div className="item-detail-container p-4">Producto no encontrado</div>
 
-const Buttons = ({ className }) => (
+export const Buttons = ({ className }) => (
   <div className={className}>
     <button
       className="ml-btn-primary mb-1"

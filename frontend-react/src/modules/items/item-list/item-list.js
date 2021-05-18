@@ -47,7 +47,7 @@ class Itemlist extends React.Component {
           {(items.length === 0)
             ? 'Bienvenido'
             : items.map((item) =>
-              <div key={item.id.toString()} className="product-item" onClick={() => this.goToDetail(`${url}/${item.id}`)}>
+              <div id={item.id.toString()} key={item.id.toString()} className="product-item" onClick={() => this.goToDetail(`${url}/${item.id}`)}>
                 <div className="product-item-img">
                   <figure>
                     <img
