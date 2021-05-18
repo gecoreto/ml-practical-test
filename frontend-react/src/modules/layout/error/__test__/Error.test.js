@@ -29,10 +29,6 @@ describe("Error component", () => {
     describe("WHEN the Button is pressed", () => {
 
         it("THEN getProductList should be called", () => {
-            const event = {
-                preventDefault() { },
-                target: { value: 'the-value' }
-            };
             wrapper.find(`[id="bnt-to-home"]`).simulate('click');
             expect(mockHistoryPush).toHaveBeenCalledWith('/');
         });

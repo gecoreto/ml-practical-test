@@ -36,7 +36,7 @@ Ejecutar `npm run lint`
 
 ## Ejecutar unit tests
 
-Ejecutar `npm run test`
+Ejecutar `cd frontend-react/ && npm run test -- --coverage --watchAll=false`
 
 
 ## Ver en servidor de heroku

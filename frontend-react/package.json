@@ -20,7 +20,8 @@
     "build": "BUILD_PATH='../www' react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "coverage": "react-scripts test --coverage"
+    "coverage": "react-scripts test --coverage",
+    "lint": "eslint --ext .jsx,.js src"
   },
   "eslintConfig": {
     "extends": [
