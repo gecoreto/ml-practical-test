@@ -1,4 +1,31 @@
-import itemsReducer, { fetchProductDetail, fetchSearchProducts } from './itemsSlice';
+import itemsReducer,
+{
+  cleanItems,
+  fetchProductDetail,
+  fetchSearchProducts,
+  itemsSlice,
+  selectProduct
+} from './itemsSlice';
+
+const product = {
+  id: "MLA916044386",
+  title: "Ps5",
+  installments: { currency_id: "ARS" },
+  price: { currency: "ARS", amount: 5000 },
+  address: { city_name: "Mar de la plata" },
+  free_shipping: true
+};
+
+jest.mock('../services/itemsAPI', () => ({
+  fetchProducts: (s) => ({
+    data: {
+      items: [product],
+      categories: []
+    }
+  }),
+  fetchProductDetailById: (s) => ({ product })
+}));
+
 
 describe('items reducer', () => {
   const initialState = {
@@ -11,6 +38,28 @@ describe('items reducer', () => {
 
   it('should handle initial state', () => {
     expect(itemsReducer(undefined, { type: 'unknown' })).toEqual(initialState);
+  });
+
+  describe('should call the cleanItems', () => {
+    it('should clean all items', () => {
+      const result = itemsSlice.reducer(initialState, cleanItems());
+      expect(result).toEqual(initialState);
+      expect(selectProduct({ items: result })).toEqual(null);
+    });
+  });
+
+  describe('should call to services', () => {
+    it('Should receive the items from fetchSearchProducts', async () => {
+      const dispatch = jest.fn();
+      const result = await fetchSearchProducts()(dispatch);
+      expect(result.payload.items.length).toEqual(1);
+    });
+
+    it('Should receive the product detail from fetchSearchProducts', async () => {
+      const dispatch = jest.fn();
+      const result = await fetchProductDetail()(dispatch);
+      expect(result.payload.product.id).toEqual(product.id);
+    });
   });
 
   describe('reducers fetchList', () => {

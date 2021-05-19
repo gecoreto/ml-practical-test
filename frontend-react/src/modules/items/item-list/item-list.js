@@ -6,11 +6,11 @@ import currencyFormat from '../../../utils/format';
 import { fetchSearchProducts, selectItems, selectWorking } from '../store/itemsSlice';
 import './item-list.sass';
 
-const Loading = () => [1, 2, 3, 4].map((number) =>
+export const Loading = () => [1, 2, 3, 4].map((number) =>
   <div key={number.toString()} className="card-loader card-loader-item-1"></div>
 )
 
-const DeliveryIcon = () => (
+export const DeliveryIcon = () => (
   <span className="delivery-icon">
     <img
       src={trackImg}

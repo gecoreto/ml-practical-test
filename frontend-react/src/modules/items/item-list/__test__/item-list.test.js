@@ -1,6 +1,7 @@
-import React from 'react';
+import { render } from '@testing-library/react';
 import { shallow } from 'enzyme';
-import { Itemlist } from '../item-list';
+import React from 'react';
+import { DeliveryIcon, Itemlist, Loading } from '../item-list';
 
 const mockHistoryPush = jest.fn();
 const mockFetchSearchProducts = jest.fn();
@@ -42,12 +43,17 @@ describe("Itemlist component", () => {
     });
 
     describe("WHEN It is loading", () => {
-        it("THEN Loading should be", () => {
-            wrapper.setProps({ ...props, working: true })
-            expect(1).toEqual(1);
+        test('renders Loading', () => {
+            const { container } = render(<Loading />);
+            expect(container.getElementsByClassName('card-loader').length).toBe(4);
         });
     });
 
-   
+    describe("WHEN It is DeliveryIcon", () => {
+        test('renders DeliveryIcon', () => {
+            const { container } = render(<DeliveryIcon />);
+            expect(container.getElementsByClassName('delivery-icon').length).toBe(1);
+        });
+    });
 
 });
